@@ -4,7 +4,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const phoneBookApi = createApi({
   reducerPath: 'phoneBookApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://619b5e6c2782760017445557.mockapi.io/contacts/',
+    baseUrl: 'https://connections-api.herokuapp.com/',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set('authorization', `${token}`);
+      }
+
+      return headers;
+    },
   }),
   tagTypes: ['Contacts'],
 
@@ -38,6 +46,29 @@ export const phoneBookApi = createApi({
       }),
       invalidatesTags: (result, error, id) => [{ type: 'Contacts', id }],
     }),
+    signup: build.mutation({
+      query: userData => ({
+        url: '/users/signup',
+        method: 'POST',
+        body: userData,
+      }),
+    }),
+    login: build.mutation({
+      query: userData => ({
+        url: '/users/login',
+        method: 'POST',
+        body: userData,
+      }),
+    }),
+    logout: build.mutation({
+      query: () => ({
+        url: '/users/logout',
+        method: 'POST',
+      }),
+    }),
+    getCurrentUser: build.query({
+      query: () => '/users/current',
+    }),
   }),
 });
 
@@ -48,4 +79,8 @@ export const {
   useGetContactsQuery,
   useDelContactMutation,
   useAddContactMutation,
+  useSignupMutation,
+  useLoginMutation,
+  useLogoutMutation,
+  useGetCurrentUserQuery,
 } = phoneBookApi;
