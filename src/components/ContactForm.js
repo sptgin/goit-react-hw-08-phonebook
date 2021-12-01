@@ -53,11 +53,11 @@ export default function ContactForm() {
         )}
       </label>
       <label className="contcts__form-label">
-        Number
+        Phone
         <input
           className="contcts__form-input"
           type="tel"
-          {...register('phone', {
+          {...register('number', {
             required: true,
             pattern:
               /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,

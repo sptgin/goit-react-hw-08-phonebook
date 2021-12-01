@@ -3,9 +3,7 @@ import selectors from './redux/selectors';
 import { useEffect } from 'react';
 import { useGetCurrentUserQuery } from './services/phonebook-api';
 import { setUser } from './redux/slice';
-
 import Section from './components/Section';
-
 import './App.css';
 import MainMenu from './components/MainMenu';
 import { Link, Routes, Route } from 'react-router-dom';
@@ -32,25 +30,7 @@ export default function App() {
   return (
     <div>
       <h1 className="header__main">React HW 008 Phonebook</h1>
-      <Section title="">
-        <MainMenu />
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/contacts">Phonebook</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-          </ul>
-        </nav>
-      </Section>
+      <MainMenu />
       <main>
         <Routes>
           <Route

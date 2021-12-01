@@ -4,6 +4,7 @@ import { useLogoutMutation } from '../services/phonebook-api';
 import selectors from '../redux/selectors';
 import { setLogout } from '../redux/slice';
 import { useNavigate } from 'react-router-dom';
+import Section from './Section';
 
 export default function MainMenu() {
   const isLogged = useSelector(selectors.isLogin);
@@ -19,20 +20,39 @@ export default function MainMenu() {
   };
   return (
     <div>
-      <Link to="/">
-        {' '}
-        <h1>Phonebook</h1>
-      </Link>
-      {isLogged && (
-        <div>
-          <p>
-            Hello, <span>{name}</span>
-          </p>
-          <button type="button" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      )}
+      <Section title="">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/contacts">Phonebook</Link>
+            </li>
+          </ul>
+          {!isLogged && (
+            <ul>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </ul>
+          )}
+        </nav>
+        {isLogged && (
+          <div>
+            <p>
+              Hello, <span>{name}</span>
+            </p>
+            <button type="button" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        )}
+      </Section>
     </div>
   );
 }
