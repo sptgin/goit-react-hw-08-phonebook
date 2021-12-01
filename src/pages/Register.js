@@ -1,10 +1,12 @@
+import Section from '../components/Section';
+import RegisterForm from '../components/RegisterForm';
+
 export function Register() {
   return (
     <>
-      <h2>Register Form</h2>
-      <focus>
-        <input />
-      </focus>
+      <Section title="Register">
+        <RegisterForm />
+      </Section>
     </>
   );
 }

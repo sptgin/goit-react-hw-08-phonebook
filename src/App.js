@@ -1,22 +1,39 @@
+import { useSelector, useDispatch } from 'react-redux';
+import selectors from './redux/selectors';
+import { useEffect } from 'react';
+import { useGetCurrentUserQuery } from './services/phonebook-api';
+import { setUser } from './redux/slice';
+
 import Section from './components/Section';
-import ContactForm from './components/ContactForm';
-import Filter from './components/Filter';
-import ContactsList from './components/ContactsList';
+
 import './App.css';
+import MainMenu from './components/MainMenu';
 import { Link, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
-import { Contacts } from './pages/Contacts';
+import Contacts from './pages/Contacts';
 import { PublicRoute } from './routes/PublicRoute';
 import { PrivateRoute } from './routes/PrivateRoute';
 
 export default function App() {
-  const isAuth = true; //useSelector(selectors.isLogin);
+  const dispatch = useDispatch();
+  const isAuth = useSelector(selectors.isLogin);
+  const token = useSelector(selectors.getToken);
+  const { data } = useGetCurrentUserQuery('', {
+    skip: token === null || (token && isAuth),
+  });
+
+  useEffect(() => {
+    if (isAuth) return;
+    data && dispatch(setUser(data));
+  }, [data, dispatch, isAuth]);
+
   return (
     <div>
       <h1 className="header__main">React HW 008 Phonebook</h1>
       <Section title="">
+        <MainMenu />
         <nav>
           <ul>
             <li>
@@ -54,14 +71,6 @@ export default function App() {
           />
         </Routes>
       </main>
-
-      {/* <Section title="Phonebook">
-        <ContactForm />
-      </Section>
-      <Section title="Contacts">
-        <Filter />
-        <ContactsList />
-      </Section> */}
     </div>
   );
 }

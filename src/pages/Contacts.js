@@ -1,7 +1,18 @@
-export function Contacts() {
+import Section from '../components/Section';
+import ContactForm from '../components/ContactForm';
+import Filter from '../components/Filter';
+import ContactsList from '../components/ContactsList';
+
+export default function Contacts() {
   return (
     <>
-      <h2>Contacts Page</h2>
+      <Section title="Phonebook">
+        <ContactForm />
+      </Section>
+      <Section title="Contacts">
+        <Filter />
+        <ContactsList />
+      </Section>
     </>
   );
 }

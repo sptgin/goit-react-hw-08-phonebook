@@ -1,10 +1,12 @@
+import Section from '../components/Section';
+import LoginForm from '../components/LoginForm';
+
 export function Login() {
   return (
     <>
-      <h2>Login Form</h2>
-      <focus>
-        <input />
-      </focus>
+      <Section title="Log in">
+        <LoginForm />
+      </Section>
     </>
   );
 }
