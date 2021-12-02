@@ -1,0 +1,58 @@
+.mainmenu__nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainmenu__form-label {
+}
+.mainmenu__form-button {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 100px;
+  height: 20px;
+  border-style: none;
+  border-radius: 5px;
+  margin-left: 30px;
+  color: white;
+  background: grey;
+}
+.mainmenu__link {
+  text-decoration: none;
+  color: black;
+}
+.mainmenu__link:hover {
+  color: darkgrey;
+}
+.mainmenu__list {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 0px;
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+}
+
+.mainmenu__list-item {
+  margin-right: 15px;
+  list-style: none;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+.mainmenu__loginlist {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 0px;
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+}
+
+.mainmenu__loginlist-item {
+  margin-left: 15px;
+  list-style: none;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}

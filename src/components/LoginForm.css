@@ -1,0 +1,20 @@
+.login__form {
+  margin-bottom: 15px;
+}
+
+.login__form-input {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.login__form-label {
+}
+.login__form-button {
+  width: 100px;
+  height: 20px;
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+  background: grey;
+}

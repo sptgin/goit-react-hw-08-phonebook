@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../redux/slice';
 import { useLoginMutation } from '../services/phonebook-api';
+import './LoginForm.css';
 
 export default function LoginForm() {
   const {
@@ -27,10 +28,11 @@ export default function LoginForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
+      <form className="login__form" onSubmit={handleSubmit(onSubmit)}>
+        <label className="login__form-label">
           Email
           <input
+            className="login__form-input"
             {...register('email', { required: true })}
             title="email"
             type="email"
@@ -39,9 +41,10 @@ export default function LoginForm() {
             <p>This field is required ...</p>
           )}
         </label>
-        <label>
+        <label className="login__form-label">
           Password
           <input
+            className="login__form-input"
             {...register('password', { required: true })}
             title="password"
             type="password"
@@ -50,7 +53,9 @@ export default function LoginForm() {
             <p>This field is required ...</p>
           )}
         </label>
-        <button type="submit">Log in</button>
+        <button className="login__form-button" type="submit">
+          Log in
+        </button>
       </form>
     </>
   );

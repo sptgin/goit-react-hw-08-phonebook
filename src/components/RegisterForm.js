@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useSignupMutation } from '../services/phonebook-api';
 import { setCredentials } from '../redux/slice';
+import './RegisterForm.css';
 
 export default function RegisterForm() {
   const [onRegister] = useSignupMutation();
@@ -25,10 +26,11 @@ export default function RegisterForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label>
+      <form className="register__form" onSubmit={handleSubmit(onSubmit)}>
+        <label className="register__form-label">
           Name
           <input
+            className="register__form-input"
             {...register('name', {
               required: true,
               pattern:
@@ -43,9 +45,10 @@ export default function RegisterForm() {
           )}
           {errors?.name?.type === 'pattern' && <p>Characters only</p>}
         </label>
-        <label>
+        <label className="register__form-label">
           Email
           <input
+            className="register__form-input"
             {...register('email', { required: true, type: 'email' })}
             title="email"
             type="email"
@@ -55,13 +58,14 @@ export default function RegisterForm() {
             <p>This field is required ...</p>
           )}
         </label>
-        <label>
+        <label className="register__form-label">
           Password
           <input
+            className="register__form-input"
             {...register('password', { required: true, minLength: 7 })}
             title="Input your password"
             type="password"
-            placeholder="password"
+            placeholder="min 7 char"
           />
           {errors?.password?.type === 'required' && (
             <p>This field is required ...</p>
@@ -70,7 +74,9 @@ export default function RegisterForm() {
             <p>Password must contain minimum 7 charts</p>
           )}
         </label>
-        <button type="submit">Register</button>
+        <button className="register__form-button" type="submit">
+          Register
+        </button>
       </form>
     </>
   );

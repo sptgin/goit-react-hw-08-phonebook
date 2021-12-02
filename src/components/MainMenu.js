@@ -5,6 +5,7 @@ import selectors from '../redux/selectors';
 import { setLogout } from '../redux/slice';
 import { useNavigate } from 'react-router-dom';
 import Section from './Section';
+import './MainMenu.css';
 
 export default function MainMenu() {
   const isLogged = useSelector(selectors.isLogin);
@@ -21,37 +22,49 @@ export default function MainMenu() {
   return (
     <div>
       <Section title="">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
+        <nav className="mainmenu__nav">
+          <ul className="mainmenu__list">
+            <li className="mainmenu__list-item">
+              <Link className="mainmenu__link" to="/">
+                Home
+              </Link>
             </li>
-            <li>
-              <Link to="/contacts">Phonebook</Link>
+            <li className="mainmenu__list-item">
+              <Link className="mainmenu__link" to="/contacts">
+                Phonebook
+              </Link>
             </li>
           </ul>
           {!isLogged && (
-            <ul>
-              <li>
-                <Link to="/login">Login</Link>
+            <ul className="mainmenu__loginlist">
+              <li className="mainmenu__loginlist-item">
+                <Link className="mainmenu__link" to="/login">
+                  Login
+                </Link>
               </li>
 
-              <li>
-                <Link to="/register">Register</Link>
+              <li className="mainmenu__loginlist-item">
+                <Link className="mainmenu__link" to="/register">
+                  Register
+                </Link>
               </li>
             </ul>
           )}
-        </nav>
-        {isLogged && (
-          <div>
-            <p>
+          {isLogged && (
+            <div>
+              {/* <p>
               Hello, <span>{name}</span>
-            </p>
-            <button type="button" onClick={handleLogout}>
-              Logout
-            </button>
-          </div>
-        )}
+            </p> */}
+              <button
+                className="mainmenu__form-button"
+                type="button"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </nav>
       </Section>
     </div>
   );

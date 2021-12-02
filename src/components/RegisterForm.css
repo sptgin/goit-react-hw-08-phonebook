@@ -1,0 +1,20 @@
+.register__form {
+  margin-bottom: 15px;
+}
+
+.register__form-input {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.register__form-label {
+}
+.register__form-button {
+  width: 100px;
+  height: 20px;
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+  background: grey;
+}
