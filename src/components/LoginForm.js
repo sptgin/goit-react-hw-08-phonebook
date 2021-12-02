@@ -19,7 +19,6 @@ export default function LoginForm() {
       .unwrap()
       .then(fulfilled => {
         dispatch(setCredentials(fulfilled));
-        //alert(`Welcome, ${fulfilled.user.name}`);
       })
       .catch(error => alert('Login or password is invalid!'));
 

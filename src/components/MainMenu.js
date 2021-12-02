@@ -9,8 +9,6 @@ import './MainMenu.css';
 
 export default function MainMenu() {
   const isLogged = useSelector(selectors.isLogin);
-  console.log(isLogged);
-  const name = useSelector(selectors.getName);
   const [logOut] = useLogoutMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,9 +49,6 @@ export default function MainMenu() {
           )}
           {isLogged && (
             <div>
-              {/* <p>
-              Hello, <span>{name}</span>
-            </p> */}
               <button
                 className="mainmenu__form-button"
                 type="button"

@@ -6,11 +6,7 @@ import './ContactsList.css';
 
 export default function ContactsList() {
   const filter = useSelector(state => state.filter);
-
   const { data, isFetching } = useGetContactsQuery();
-
-  console.log(data);
-
   return (
     <div>
       {isFetching && <Loader />}
