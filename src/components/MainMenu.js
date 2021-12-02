@@ -42,7 +42,6 @@ export default function MainMenu() {
                   Login
                 </Link>
               </li>
-
               <li className="mainmenu__loginlist-item">
                 <Link className="mainmenu__link" to="/register">
                   Register
